@@ -1,12 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { createClient } from '@supabase/supabase-js'
+import { faClock, faComment } from '@fortawesome/free-regular-svg-icons'
 
 // Create a single supabase client for interacting with your database
-const supabase = createClient(process.env.SUPABASE_URL || '', process.env.SUPABASE_PUBLIC_API_KEY || '')
+const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL || '', process.env.NEXT_PUBLIC_SUPABASE_PUBLIC_API_KEY || '')
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,108 +20,28 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/index.tsx</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
+      <main className={'p-3 bg-cyan-500 h-screen'}>
+        <h1 className='text-xl text-white font-extrabold mb-4'>Viestimuuri</h1>
+
+        <div className='flex flex-col'>
+          <div className='py-3 px-4 mx-auto bg-white rounded-xl shadow-lg w-1/3'>
+            <p>Tämä on uusi viesti 111. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisl dui, lobortis eu lobortis vitae, bibendum eget libero. Ut eget vulputate odio, ac convallis risus. Aliquam eleifend et velit sed pharetra. Mauris euismod neque non elit porttitor consectetur. Nullam blandit eu felis ac hendrerit. Suspendisse quis massa efficitur, vulputate nunc volutpat, auctor lorem. Mauris mollis viverra varius. In viverra sapien ut lectus venenatis dignissim. Phasellus pretium lectus at ipsum cursus, vel placerat turpis cursus. Praesent luctus fermentum nunc, non porta purus convallis ac. Nullam lobortis magna a leo mollis pulvinar. Proin dignissim orci vitae dictum pretium. Vivamus eu dui bibendum est vulputate vestibulum quis ut diam. Nulla facilisi. Mauris ornare felis vel est pretium, eget volutpat lacus varius. Nulla eleifend placerat ex nec tristique.</p>
+            <div className='text-right text-xs text-gray-500 mt-2'><FontAwesomeIcon icon={faClock}/> 13.02.2023 klo 15:54</div>
           </div>
-        </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
+          
+          <div className='py-3 px-4 mx-auto bg-white rounded-xl shadow-lg w-1/3'>
+            <p>Tämä on uusi viesti 222. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisl dui, lobortis eu lobortis vitae, bibendum eget libero. Ut eget vulputate odio, ac convallis risus. Aliquam eleifend et velit sed pharetra. Mauris euismod neque non elit porttitor consectetur. Nullam blandit eu felis ac hendrerit. Suspendisse quis massa efficitur, vulputate nunc volutpat, auctor lorem. Mauris mollis viverra varius. In viverra sapien ut lectus venenatis dignissim. Phasellus pretium lectus at ipsum cursus, vel placerat turpis cursus. Praesent luctus fermentum nunc, non porta purus convallis ac. Nullam lobortis magna a leo mollis pulvinar. Proin dignissim orci vitae dictum pretium. Vivamus eu dui bibendum est vulputate vestibulum quis ut diam. Nulla facilisi. Mauris ornare felis vel est pretium, eget volutpat lacus varius. Nulla eleifend placerat ex nec tristique.</p>
+            <div className='text-right text-xs text-gray-500 mt-2'><FontAwesomeIcon icon={faClock}/> 13.02.2023 klo 15:54</div>
           </div>
-        </div>
+          <div className='py-3 px-4 mx-auto bg-white rounded-xl shadow-lg w-1/3'>
+            <p>Tämä on uusi viesti 333. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisl dui, lobortis eu lobortis vitae, bibendum eget libero. Ut eget vulputate odio, ac convallis risus. Aliquam eleifend et velit sed pharetra. Mauris euismod neque non elit porttitor consectetur. Nullam blandit eu felis ac hendrerit. Suspendisse quis massa efficitur, vulputate nunc volutpat, auctor lorem. Mauris mollis viverra varius. In viverra sapien ut lectus venenatis dignissim. Phasellus pretium lectus at ipsum cursus, vel placerat turpis cursus. Praesent luctus fermentum nunc, non porta purus convallis ac. Nullam lobortis magna a leo mollis pulvinar. Proin dignissim orci vitae dictum pretium. Vivamus eu dui bibendum est vulputate vestibulum quis ut diam. Nulla facilisi. Mauris ornare felis vel est pretium, eget volutpat lacus varius. Nulla eleifend placerat ex nec tristique.</p>
+            <div className='text-right text-xs text-gray-500 mt-2'><FontAwesomeIcon icon={faClock}/> 13.02.2023 klo 15:54</div>
+          </div>
+          <div className='py-3 px-4 mx-auto bg-white rounded-xl shadow-lg w-1/3'>
+            <p>Tämä on uusi viesti 444. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisl dui, lobortis eu lobortis vitae, bibendum eget libero. Ut eget vulputate odio, ac convallis risus. Aliquam eleifend et velit sed pharetra. Mauris euismod neque non elit porttitor consectetur. Nullam blandit eu felis ac hendrerit. Suspendisse quis massa efficitur, vulputate nunc volutpat, auctor lorem. Mauris mollis viverra varius. In viverra sapien ut lectus venenatis dignissim. Phasellus pretium lectus at ipsum cursus, vel placerat turpis cursus. Praesent luctus fermentum nunc, non porta purus convallis ac. Nullam lobortis magna a leo mollis pulvinar. Proin dignissim orci vitae dictum pretium. Vivamus eu dui bibendum est vulputate vestibulum quis ut diam. Nulla facilisi. Mauris ornare felis vel est pretium, eget volutpat lacus varius. Nulla eleifend placerat ex nec tristique.</p>
+            <div className='text-right text-xs text-gray-500 mt-2'><FontAwesomeIcon icon={faClock}/> 13.02.2023 klo 15:54</div>
+          </div>
 
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
         </div>
       </main>
     </>
