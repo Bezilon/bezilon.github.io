@@ -7,7 +7,7 @@ import { createClient } from '@supabase/supabase-js'
 import { faClock, faComment } from '@fortawesome/free-regular-svg-icons'
 
 // Create a single supabase client for interacting with your database
-const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL || '', process.env.NEXT_PUBLIC_SUPABASE_PUBLIC_API_KEY || '')
+// const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL || '', process.env.NEXT_PUBLIC_SUPABASE_PUBLIC_API_KEY || '')
 
 const inter = Inter({ subsets: ['latin'] })
 
