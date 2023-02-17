@@ -1,3 +1,5 @@
+import { Message } from 'lib/models/Message'
+
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
@@ -6,11 +8,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { createClient } from '@supabase/supabase-js'
 import { faClock, faComment } from '@fortawesome/free-regular-svg-icons'
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 const inter = Inter({ subsets: ['latin'] })
+
+const MessageBlock = ({id, created_at, text, appoved_by, appoved_at}: Message) => {
+  const createdAt = new Date(created_at)
+  return <div className='py-3 px-4 mx-auto bg-white rounded-xl shadow-lg w-1/3 mb-4'>
+    <p>{text}</p>
+    <div className='text-right text-xs text-gray-500 mt-2'><FontAwesomeIcon icon={faClock}/> {createdAt.toTimeString()}</div>
+  </div>
+}
   
 export default function Home() {
-  const [ messages, setMessages ] = useState([])
+  const [ messages, setMessages ] = useState<Array<Message>>([])
+
+  useEffect(() => {
+    axios.get('/api/messages').then(response => setMessages(response.data))
+  }, [])
 
   return (
     <>
@@ -24,24 +39,15 @@ export default function Home() {
         <h1 className='text-xl text-white font-extrabold mb-4'>Viestimuuri</h1>
 
         <div className='flex flex-col'>
-          <div className='py-3 px-4 mx-auto bg-white rounded-xl shadow-lg w-1/3'>
-            <p>Tämä on uusi viesti 111. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisl dui, lobortis eu lobortis vitae, bibendum eget libero. Ut eget vulputate odio, ac convallis risus. Aliquam eleifend et velit sed pharetra. Mauris euismod neque non elit porttitor consectetur. Nullam blandit eu felis ac hendrerit. Suspendisse quis massa efficitur, vulputate nunc volutpat, auctor lorem. Mauris mollis viverra varius. In viverra sapien ut lectus venenatis dignissim. Phasellus pretium lectus at ipsum cursus, vel placerat turpis cursus. Praesent luctus fermentum nunc, non porta purus convallis ac. Nullam lobortis magna a leo mollis pulvinar. Proin dignissim orci vitae dictum pretium. Vivamus eu dui bibendum est vulputate vestibulum quis ut diam. Nulla facilisi. Mauris ornare felis vel est pretium, eget volutpat lacus varius. Nulla eleifend placerat ex nec tristique.</p>
-            <div className='text-right text-xs text-gray-500 mt-2'><FontAwesomeIcon icon={faClock}/> 13.02.2023 klo 15:54</div>
-          </div>
-          
-          <div className='py-3 px-4 mx-auto bg-white rounded-xl shadow-lg w-1/3'>
-            <p>Tämä on uusi viesti 222. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisl dui, lobortis eu lobortis vitae, bibendum eget libero. Ut eget vulputate odio, ac convallis risus. Aliquam eleifend et velit sed pharetra. Mauris euismod neque non elit porttitor consectetur. Nullam blandit eu felis ac hendrerit. Suspendisse quis massa efficitur, vulputate nunc volutpat, auctor lorem. Mauris mollis viverra varius. In viverra sapien ut lectus venenatis dignissim. Phasellus pretium lectus at ipsum cursus, vel placerat turpis cursus. Praesent luctus fermentum nunc, non porta purus convallis ac. Nullam lobortis magna a leo mollis pulvinar. Proin dignissim orci vitae dictum pretium. Vivamus eu dui bibendum est vulputate vestibulum quis ut diam. Nulla facilisi. Mauris ornare felis vel est pretium, eget volutpat lacus varius. Nulla eleifend placerat ex nec tristique.</p>
-            <div className='text-right text-xs text-gray-500 mt-2'><FontAwesomeIcon icon={faClock}/> 13.02.2023 klo 15:54</div>
-          </div>
-          <div className='py-3 px-4 mx-auto bg-white rounded-xl shadow-lg w-1/3'>
-            <p>Tämä on uusi viesti 333. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisl dui, lobortis eu lobortis vitae, bibendum eget libero. Ut eget vulputate odio, ac convallis risus. Aliquam eleifend et velit sed pharetra. Mauris euismod neque non elit porttitor consectetur. Nullam blandit eu felis ac hendrerit. Suspendisse quis massa efficitur, vulputate nunc volutpat, auctor lorem. Mauris mollis viverra varius. In viverra sapien ut lectus venenatis dignissim. Phasellus pretium lectus at ipsum cursus, vel placerat turpis cursus. Praesent luctus fermentum nunc, non porta purus convallis ac. Nullam lobortis magna a leo mollis pulvinar. Proin dignissim orci vitae dictum pretium. Vivamus eu dui bibendum est vulputate vestibulum quis ut diam. Nulla facilisi. Mauris ornare felis vel est pretium, eget volutpat lacus varius. Nulla eleifend placerat ex nec tristique.</p>
-            <div className='text-right text-xs text-gray-500 mt-2'><FontAwesomeIcon icon={faClock}/> 13.02.2023 klo 15:54</div>
-          </div>
-          <div className='py-3 px-4 mx-auto bg-white rounded-xl shadow-lg w-1/3'>
-            <p>Tämä on uusi viesti 444. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisl dui, lobortis eu lobortis vitae, bibendum eget libero. Ut eget vulputate odio, ac convallis risus. Aliquam eleifend et velit sed pharetra. Mauris euismod neque non elit porttitor consectetur. Nullam blandit eu felis ac hendrerit. Suspendisse quis massa efficitur, vulputate nunc volutpat, auctor lorem. Mauris mollis viverra varius. In viverra sapien ut lectus venenatis dignissim. Phasellus pretium lectus at ipsum cursus, vel placerat turpis cursus. Praesent luctus fermentum nunc, non porta purus convallis ac. Nullam lobortis magna a leo mollis pulvinar. Proin dignissim orci vitae dictum pretium. Vivamus eu dui bibendum est vulputate vestibulum quis ut diam. Nulla facilisi. Mauris ornare felis vel est pretium, eget volutpat lacus varius. Nulla eleifend placerat ex nec tristique.</p>
-            <div className='text-right text-xs text-gray-500 mt-2'><FontAwesomeIcon icon={faClock}/> 13.02.2023 klo 15:54</div>
-          </div>
-
+          { messages.map(message => {
+            console.log(message)
+            return <MessageBlock key={`message-${message.id}`} {...message}
+              created_at={message.created_at}
+              text={message.text}
+              appoved_by={message.appoved_by}
+              appoved_at={message.appoved_at}
+            />
+          }) }
         </div>
       </main>
     </>
